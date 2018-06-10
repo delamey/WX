@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">wx</string>
+    <string name="item_add">add_item</string>
+    <string name="item_remove">remove_item</string>
+    <string name="intent_xianshi">Intent显式转化</string>
+    <string name="tiaozhuan">Intent百度</string>
+    <string name="zhishi">指示</string>
+    <string name="progressbar">progressbar</string>
+    <string name="AlterDialog">AlterDialog</string>
+    <string name="progressDialog">progressDialog</string>
+    <string name="fragment">fragment</string>
+    <string name="leftfragment">leftfragment</string>
+    <string name="call">call</string>
+    <string name="notification">notification</string>
+    <string name="takephoto">拍照</string>
+
+</resources>
