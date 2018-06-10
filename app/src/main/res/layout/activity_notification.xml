@@ -5,15 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".notification">
+    <LinearLayout
+        android:id="@+id/Linear1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 <Button
+    android:layout_weight="1"
     android:id="@+id/takephoto"
     android:text="@string/takephoto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
+        <Button
+            android:layout_weight="1"
+            android:text="@string/openalbmu"
+            android:id="@+id/choosephoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/mediaplay"
+            android:text="@string/mediaplay"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/videoplay"
+            android:text="@string/videoplay"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
     <ImageView
         android:id="@+id/show"
-        android:layout_below="@id/takephoto"
+        android:layout_below="@id/Linear1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+    <VideoView
+        android:layout_below="@id/show"
+        android:id="@+id/videoview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

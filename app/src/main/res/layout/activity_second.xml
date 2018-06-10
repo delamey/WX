@@ -27,7 +27,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="100dp">
 
         <fragment
             android:layout_weight="1"
@@ -41,5 +41,14 @@
             android:layout_height="wrap_content">
 
         </ListView>
+
+
+
     </LinearLayout>
+    <Button
+        android:text="@string/openweb"
+        android:id="@+id/openBd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

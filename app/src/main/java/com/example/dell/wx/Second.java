@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -32,8 +33,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Second extends AppCompatActivity  {
+public class Second extends AppCompatActivity {
     public List<String> stringList = new ArrayList<>();
+
+    @BindView(R.id.openBd)
+    Button openBd;
 
     private ArrayAdapter<String> adapter;
     @BindView(R.id.zhishi)
@@ -44,19 +48,19 @@ public class Second extends AppCompatActivity  {
     Button notification;
     @BindView(R.id.secondlistview)
     ListView secondlistview;
-    public Handler handler=new Handler(){
+    public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (msg.what==1){
-                String ss= (String) msg.obj;
+            if (msg.what == 1) {
+                String ss = (String) msg.obj;
                 stringList.add(ss);
                 adapter.notifyDataSetChanged();
             }
         }
     };
 
-    @SuppressLint("NewApi")
+    @SuppressLint({"NewApi", "SetJavaScriptEnabled"})
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,15 +71,25 @@ public class Second extends AppCompatActivity  {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, stringList);
         secondlistview.setAdapter(adapter);
 
+
+
     }
 
 
-    @OnClick(R.id.tiaozhuan)
-    public void Fan() {
-        Intent intent = new Intent();
-        intent.putExtra("return", "12300");
-        setResult(RESULT_OK, intent);
-        finish();
+    @OnClick({R.id.tiaozhuan,R.id.openBd})
+    public void Fan(View view) {
+        switch (view.getId()) {
+            case R.id.tiaozhuan:
+            Intent intent = new Intent();
+            intent.putExtra("return", "12300");
+            setResult(RESULT_OK, intent);
+            finish();
+            break;
+            case R.id.openBd:
+                Intent intent1=new Intent(Second.this,webactivity.class);
+                startActivity(intent1);
+                break;
+        }
     }
 
     @OnClick(R.id.notification)
@@ -101,5 +115,6 @@ public class Second extends AppCompatActivity  {
         manager.notify(1, notification);
 
     }
+
 
 }

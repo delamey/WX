@@ -13,5 +13,9 @@
     <string name="call">call</string>
     <string name="notification">notification</string>
     <string name="takephoto">拍照</string>
-
+    <string name="openalbmu">打开相册</string>
+    <string name="mediaplay">播放音乐</string>
+    <string name="videoplay">播放视频</string>
+    <string name="openweb">openweb</string>
+    <string name="title_activity_webactivity">webactivity</string>
 </resources>
