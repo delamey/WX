@@ -61,7 +61,12 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".webactivity"></activity>
+        <activity android:name=".webactivity" />
+
+        <service
+            android:name=".DownloadService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

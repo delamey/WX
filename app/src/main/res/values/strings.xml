@@ -18,4 +18,8 @@
     <string name="videoplay">播放视频</string>
     <string name="openweb">openweb</string>
     <string name="title_activity_webactivity">webactivity</string>
+    <string name="jiexijson">解析json</string>
+    <string name="startdown">开始下载</string>
+    <string name="pausedown">暂停下载</string>
+    <string name="canceldown">取消下载</string>
 </resources>
