@@ -13,8 +13,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class DownloadTask extends AsyncTask<String,Integer,Integer> {
-   private com.example.dell.wx.DownloadListener listener;
-   public static final int TYPE_SUCCESS=0;
+    private com.example.dell.wx.DownloadListener listener;
+    public static final int TYPE_SUCCESS=0;
     public static final int TYPE_FAILED=1;
     public static final int TYPE_PAUSED=2;
     public static final int TYPE_CANCELED=3;
@@ -45,7 +45,7 @@ public class DownloadTask extends AsyncTask<String,Integer,Integer> {
                listener.onPaused();
                break;
            case TYPE_CANCELED:
-               listener.onCanceled();;
+               listener.onCanceled();
                break;
                default:
                    break;
@@ -139,12 +139,7 @@ public void cancelDownload(){
     }
 
     private long getContentLength(String downloadurl) throws IOException {
-        OkHttpClient client=new OkHttpClient();
-        Request request=new Request.Builder()
-                .url(downloadurl)
-                .build();
-
-            Response response=client.newCall(request).execute();
+      Response response=okhttp.GetOkhttp(downloadurl);
             if (response!=null&&response.isSuccessful()){
                 long contentLength=response.body().contentLength();
                 response.body().close();

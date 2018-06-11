@@ -16,10 +16,12 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -67,17 +69,29 @@ public class MainActivity extends AppCompatActivity {
     Button phone;
     @BindView(R.id.listView)
     ListView listView;
-    private List<String> contactList=new ArrayList<>();
+    @BindView(R.id.Drawer_Layout)
+    android.support.v4.widget.DrawerLayout DrawerLayout;
+    private Toolbar toolbar;
+    private List<String> contactList = new ArrayList<>();
     private List<Fruit> fruitList = new ArrayList<>();
     private IntentFilter intentFilter;
     private NetworkReceiver networkReceiver;
     private DaoSession daoSession;
     private ArrayAdapter<String> arrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar!=null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            //actionBar.setHomeAsUpIndicator(R.drawable.n6);
+        }
+
         initFruits();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -87,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
         DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), "yonghu", null);
         DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
         daoSession = daoMaster.newSession();
-        arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,contactList);
+        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, contactList);
         listView.setAdapter(arrayAdapter);
-        if (ContextCompat.checkSelfPermission(this,Manifest.permission.READ_CONTACTS)!=PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_CONTACTS},2);
-        }else{
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 2);
+        } else {
             readContacts();
         }
 
@@ -123,10 +137,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 arrayAdapter.notifyDataSetChanged();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            if (cursor!=null){
+        } finally {
+            if (cursor != null) {
                 cursor.close();
             }
         }
@@ -270,17 +284,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu2, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.add_item:
+            case android.R.id.home:
+                DrawerLayout.openDrawer(GravityCompat.START);
+                break;
+            case R.id.delete:
                 Toast.makeText(this, "1111", Toast.LENGTH_LONG).show();
                 break;
-            case R.id.remove_item:
+            case R.id.backup:
                 Toast.makeText(this, "2222", Toast.LENGTH_LONG).show();
                 break;
             default:

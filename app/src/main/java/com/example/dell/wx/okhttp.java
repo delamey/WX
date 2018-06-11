@@ -9,23 +9,23 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class okhttp {
-public String GetOkhttp(String url){
-    String result="";
+public static Response GetOkhttp(String url){
+    Response result = null;
     OkHttpClient client = new OkHttpClient();
     Request request=new Request.Builder()
             .url(url)
             .build();
     try {
         Response response=client.newCall(request).execute();
-        result=response.body().string();
+        result=response;
 
     } catch (IOException e) {
         e.printStackTrace();
     }
     return result;
 }
-public String PostOkhttp(String url,String param){
-    String result="";
+public static Response PostOkhttp(String url, String param){
+    Response result = null;
     OkHttpClient client=new OkHttpClient();
     //FormBody.Builder formBody = new FormBody.Builder();//创建表单请求体
     //formBody.add("username","zhangsan");//传递键值对参数
@@ -41,7 +41,7 @@ public String PostOkhttp(String url,String param){
             .build();
     try {
         Response response=client.newCall(request).execute();
-        result=response.body().string();
+        result=response;
     } catch (IOException e) {
         e.printStackTrace();
     }
