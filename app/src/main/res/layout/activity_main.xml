@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:id="@+id/Drawer_Layout">
 
-<FrameLayout
+<android.support.design.widget.CoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <LinearLayout
@@ -102,13 +102,21 @@
     android:layout_height="wrap_content"/>
 
 </LinearLayout>
-</FrameLayout>
-    <TextView
-        android:background="#FFF"
-        android:textSize="30sp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatButton"
+        android:layout_gravity="bottom|end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/p1"
+        app:elevation="20dp"/>
+</android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu"
         android:layout_gravity="start"
-        android:text="Drawershow"
-        android:id="@+id/drawer_show"
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 </android.support.v4.widget.DrawerLayout>

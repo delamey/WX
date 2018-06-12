@@ -14,9 +14,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -71,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     @BindView(R.id.Drawer_Layout)
     android.support.v4.widget.DrawerLayout DrawerLayout;
+    @BindView(R.id.nav_view)
+    NavigationView navView;
+    @BindView(R.id.floatButton)
+    FloatingActionButton floatButton;
+
     private Toolbar toolbar;
     private List<String> contactList = new ArrayList<>();
     private List<Fruit> fruitList = new ArrayList<>();
@@ -85,11 +94,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if (actionBar!=null){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            //actionBar.setHomeAsUpIndicator(R.drawable.n6);
+            actionBar.setHomeAsUpIndicator(R.drawable.n6);
         }
 
         initFruits();
@@ -121,6 +131,14 @@ public class MainActivity extends AppCompatActivity {
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         networkReceiver = new NetworkReceiver();
         registerReceiver(networkReceiver, intentFilter);
+        navView.setCheckedItem(R.id.nav_call);
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                DrawerLayout.closeDrawers();
+                return true;
+            }
+        });
 
     }
 
@@ -164,11 +182,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.xianshi, R.id.seebar, R.id.AlterDialog, R.id.progressDialog, R.id.Fragment, R.id.phone})
+    @OnClick({R.id.xianshi, R.id.seebar, R.id.AlterDialog, R.id.progressDialog, R.id.Fragment, R.id.phone,R.id.floatButton})
     public void set1(View v) {
         switch (v.getId()) {
             case R.id.xianshi:
-                Intent intent = new Intent(MainActivity.this, Second.class);
+                final Intent intent = new Intent(MainActivity.this, Second.class);
                 startActivityForResult(intent, 1);
                 break;
             case R.id.seebar:
@@ -223,7 +241,17 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     call();
                 }
-
+            break;
+            case R.id.floatButton:
+                Snackbar.make(v,"Data delete",Snackbar.LENGTH_SHORT).setAction("undo", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                           Intent intent1=new Intent(MainActivity.this,CardView.class);
+                           startActivity(intent1);
+                    }
+                }).show();
+                //Toast.makeText(this,"floatButtom",Toast.LENGTH_LONG).show();
+                break;
             default:
                 break;
         }

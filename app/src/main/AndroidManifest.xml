@@ -20,8 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:label="MAIN"
             android:name=".MainActivity"
+            android:label="MAIN"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,7 +67,13 @@
         <service
             android:name=".DownloadService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".CardView" />
+        <activity
+            android:name=".detail_item_activity"
+            android:label="@string/title_activity_detail_item_activity"
+            android:theme="@style/detail_item_theme"/>
     </application>
 
 </manifest>

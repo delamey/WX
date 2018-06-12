@@ -22,4 +22,8 @@
     <string name="startdown">开始下载</string>
     <string name="pausedown">暂停下载</string>
     <string name="canceldown">取消下载</string>
+    <string name="drawershow">Drawershow</string>
+    <string name="mail">dalianmiwei@126.com</string>
+    <string name="username">delamey</string>
+    <string name="title_activity_detail_item_activity">detail_item_activity</string>
 </resources>
