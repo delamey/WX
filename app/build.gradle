@@ -9,7 +9,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
+
     greendao {
         schemaVersion 1//数据库版本号
         daoPackage 'com.example.dell.greendao'//设置DaoMaster、DaoSession、Dao包名

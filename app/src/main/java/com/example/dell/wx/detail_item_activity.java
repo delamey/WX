@@ -46,6 +46,8 @@ public class detail_item_activity extends AppCompatActivity {
         Glide.with(this).load(fruitImage).into(fruitImageView);
         String FriutContent=generateFruitContent(fruitName);
         fruitContentText.setText(FriutContent);
+        Intent intent1=new Intent(this,AlarmService.class);
+        startService(intent1);
     }
 
     private String generateFruitContent(String fruitName) {

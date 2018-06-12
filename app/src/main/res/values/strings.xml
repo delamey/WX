@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">wx</string>
+    <string name="app_name">回顾</string>
     <string name="item_add">add_item</string>
     <string name="item_remove">remove_item</string>
     <string name="intent_xianshi">Intent显式转化</string>
