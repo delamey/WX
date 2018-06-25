@@ -110,6 +110,11 @@
         android:layout_margin="20dp"
         android:src="@drawable/p1"
         app:elevation="20dp"/>
+    <TextView
+        android:id="@+id/EventBus2"
+        android:layout_gravity="bottom|right"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
 </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView

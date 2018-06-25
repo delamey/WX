@@ -15,7 +15,6 @@ import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -36,6 +35,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.orhanobut.logger.Logger;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -47,6 +48,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.os.Build.VERSION_CODES.M;
 
 public class Second extends AppCompatActivity {
     public List<String> stringList = new ArrayList<>();
@@ -97,7 +100,7 @@ public class Second extends AppCompatActivity {
     };
 
     @SuppressLint({"NewApi", "SetJavaScriptEnabled"})
-    @TargetApi(Build.VERSION_CODES.M)
+    @TargetApi(M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +124,7 @@ public class Second extends AppCompatActivity {
     public void Fan(View view) {
         switch (view.getId()) {
             case R.id.tiaozhuan:
+                EventBus.getDefault().post(new MyEvent("EventBus 传递"));
                 Intent intent = new Intent();
                 intent.putExtra("return", "12300");
                 setResult(RESULT_OK, intent);

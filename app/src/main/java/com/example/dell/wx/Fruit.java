@@ -1,9 +1,14 @@
 package com.example.dell.wx;
 
+import javax.inject.Inject;
+
 public class Fruit {
     private String name;
     private int image;
 
+
+
+    @Inject
     public Fruit(String name, int image) {
         this.name = name;
         this.image = image;

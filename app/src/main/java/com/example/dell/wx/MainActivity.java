@@ -34,6 +34,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dell.greendao.DaoMaster;
@@ -44,6 +45,10 @@ import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +57,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+//    @Inject
+//    Fruit fruit;
     @BindView(R.id.xianshi)
     Button Bt;
     @BindView(R.id.seebar)
@@ -79,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navView;
     @BindView(R.id.floatButton)
     FloatingActionButton floatButton;
+    @BindView(R.id.EventBus2)
+    TextView EventBus2;
 
     private Toolbar toolbar;
     private List<String> contactList = new ArrayList<>();
@@ -93,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        DaggerMainComponent.builder().textViewModule(new TextViewModule(this)).build().inject(this);
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -102,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.n6);
         }
 
+        EventBus.getDefault().register(this);
         initFruits();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -182,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.xianshi, R.id.seebar, R.id.AlterDialog, R.id.progressDialog, R.id.Fragment, R.id.phone,R.id.floatButton})
+    @OnClick({R.id.xianshi, R.id.seebar, R.id.AlterDialog, R.id.progressDialog, R.id.Fragment, R.id.phone, R.id.floatButton})
     public void set1(View v) {
         switch (v.getId()) {
             case R.id.xianshi:
@@ -241,13 +252,13 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     call();
                 }
-            break;
+                break;
             case R.id.floatButton:
-                Snackbar.make(v,"Data delete",Snackbar.LENGTH_SHORT).setAction("undo", new View.OnClickListener() {
+                Snackbar.make(v, "Data delete", Snackbar.LENGTH_SHORT).setAction("undo", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                           Intent intent1=new Intent(MainActivity.this,CardView.class);
-                           startActivity(intent1);
+                        Intent intent1 = new Intent(MainActivity.this, CardView.class);
+                        startActivity(intent1);
                     }
                 }).show();
                 //Toast.makeText(this,"floatButtom",Toast.LENGTH_LONG).show();
@@ -334,5 +345,16 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN,priority = 1)
+    public void onMessageEvent(MyEvent event) {
+        Logger.d("message is " + event.getMsg());
+        // 更新界面
+        EventBus2.setText(event.getMsg());
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }
