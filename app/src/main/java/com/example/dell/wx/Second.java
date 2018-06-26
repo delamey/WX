@@ -48,6 +48,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import static android.os.Build.VERSION_CODES.M;
 
@@ -131,8 +134,25 @@ public class Second extends AppCompatActivity {
                 finish();
                 break;
             case R.id.openBd:
-                Intent intent1 = new Intent(Second.this, webactivity.class);
-                startActivity(intent1);
+//                Intent intent1 = new Intent(Second.this, webactivity.class);
+//                startActivity(intent1);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        OkHttpClient client=new OkHttpClient.Builder().addInterceptor(new LoggingInterceptor()).build();
+                        Request request=new Request.Builder().get().url("http://www.baidu.com")
+                                .header("User-Agent","OkHttp Example")
+                                .build();
+                        try {
+                            Response response=client.newCall(request).execute();
+                            Logger.d(response);
+                            response.body().close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+
                 break;
             case R.id.jiexiJson:
                 File file = new File(Environment.getExternalStorageDirectory(), "data.json");

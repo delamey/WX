@@ -18,11 +18,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity
+            android:name=".VolleyActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
-            android:name=".MainActivity"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,8 +30,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:name=".Second"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:launchMode="singleInstance" />
 
         <receiver
@@ -51,8 +50,8 @@
         </receiver>
 
         <activity
-            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:name=".notification"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:launchMode="standard" />
 
         <provider
@@ -66,9 +65,9 @@
         </provider>
 
         <activity
-            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:name=".webactivity"
-            android:launchMode="singleInstance"/>
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+            android:launchMode="singleInstance" />
 
         <service
             android:name=".DownloadService"
@@ -76,20 +75,22 @@
             android:exported="true" />
 
         <activity
-            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:name=".CardView"
-            android:launchMode="singleInstance"/>
-        <activity
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
-            android:launchMode="singleInstance"
+            android:launchMode="singleInstance" />
+        <activity
             android:name=".detail_item_activity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:label="@string/title_activity_detail_item_activity"
+            android:launchMode="singleInstance"
             android:theme="@style/detail_item_theme" />
 
         <service
             android:name=".AlarmService"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
+
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
