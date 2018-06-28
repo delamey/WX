@@ -4,13 +4,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VolleyActivity">
+    tools:context=".VolleyActivity"
+    android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="150dp">
 <TextView
     android:id="@+id/volleyShow"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+    android:layout_height="100dp" />
+
     </ScrollView>
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/net_work_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

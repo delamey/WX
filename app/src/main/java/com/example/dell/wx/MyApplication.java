@@ -12,6 +12,7 @@ private static Context context;
         super.onCreate();
         context = getApplicationContext();
         EventBus.builder().addIndex(new MyEventBusIndex()).installDefaultEventBus();
+        NetworkManager.getInstance().init(context);
     }
     public static Context getContext(){
         return context;
