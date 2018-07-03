@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".VolleyActivity"
+            android:name=".RetrofitActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:launchMode="singleInstance">
             <intent-filter>
@@ -90,7 +90,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".VolleyActivity"/>
     </application>
 
 </manifest>
