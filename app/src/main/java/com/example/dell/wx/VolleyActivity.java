@@ -31,7 +31,7 @@ import butterknife.ButterKnife;
 
 import static com.example.dell.wx.MyApplication.getContext;
 
-public class VolleyActivity extends AppCompatActivity {
+public class VolleyActivity extends AppCompatActivity {;
 
     @BindView(R.id.volleyShow)
     TextView volleyShow;
@@ -48,7 +48,8 @@ public class VolleyActivity extends AppCompatActivity {
 //        netWorkImageView.setDefaultImageResId(R.mipmap.ic_launcher);
 //        String url="https://ws1.sinaimg.cn/large/610dc034ly1fj3w0emfcbj20u011iabm.jpg";
 //        netWorkImageView.setImageUrl(url,NetworkManager.getInstance().getmImageLoader());
-         onStartString2Requset();
+        //onStartJsonArrayRequest();
+        onStartJsonObjectRequest();
     }
 
     public void onStartStringRequset() {
@@ -141,7 +142,8 @@ public class VolleyActivity extends AppCompatActivity {
     };
 
     private void onStartJsonArrayRequest() {
-        String url = "https://api.github.com/users/octocat/repos";
+        //String url = "https://api.github.com/users/octocat/repos";
+        String url="https://192.168.3.11:80/json.json";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, mJSONArrayListener, mErrorListener);
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(5000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,

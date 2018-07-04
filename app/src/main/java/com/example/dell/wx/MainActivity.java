@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
     Button Fragment;
     @BindView(R.id.right_fragment)
     FrameLayout rightFragment;
-
     @BindView(R.id.phone)
     Button phone;
     @BindView(R.id.listView)
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        DaggerMainComponent.builder().textViewModule(new TextViewModule(this)).build().inject(this);
+        //DaggerMainComponent.builder().textViewModule(new TextViewModule(this)).build().inject(this);
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
