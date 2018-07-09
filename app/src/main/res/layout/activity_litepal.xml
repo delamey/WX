@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LitepalActivity">
+
+
+    <Button
+        android:id="@+id/LitepalCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LitepalCreate" />
+
+    <Button
+        android:id="@+id/LitepalAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LitepalAdd" />
+
+    <Button
+        android:id="@+id/LitepalUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LitepalUpdate" />
+
+    <Button
+        android:id="@+id/LitepalDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LitepalDelete" />
+    <Button
+        android:id="@+id/LitepalQuery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LitepalQuery" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+         />
+</LinearLayout>

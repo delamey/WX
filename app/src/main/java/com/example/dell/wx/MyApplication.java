@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import org.greenrobot.eventbus.EventBus;
+import org.litepal.LitePal;
 
 public class MyApplication extends Application {
 private static Context context;
@@ -13,6 +14,7 @@ private static Context context;
         context = getApplicationContext();
         EventBus.builder().addIndex(new MyEventBusIndex()).installDefaultEventBus();
         NetworkManager.getInstance().init(context);
+        LitePal.initialize(context);
     }
     public static Context getContext(){
         return context;
